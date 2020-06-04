@@ -1,0 +1,17 @@
+<div fxLayout="column" fxLayoutAlign="space-between">
+	<div fxLayout="row" fxLayoutAlign="space-between center">
+		<h3>{{ teaser.name }}</h3>
+		<h5>{{ teaser.createdAt | date }}</h5>
+	</div>
+
+	<a href="#">
+		<h5>{{ teaser.author }}</h5>
+	</a>
+	
+	<mat-chip-list *ngIf="teaser.tags?.length > 0">
+		<mat-chip color="accent"
+			[selectable]="true"
+			selected
+			*ngFor="let tag of teaser.tags">{{ tag }}</mat-chip>
+	</mat-chip-list>
+</div>

@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Add a new Tech Teaser</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="data.title">
+  </mat-form-field>
+  <br>
+	<mat-form-field>
+    <mat-label>Author</mat-label>
+    <!-- TODO : get list of users from service and autocomplete here instead -->
+    <input matInput [(ngModel)]="data.author">
+  </mat-form-field>
+  <br>
+  <app-editable-chip-list
+    [(chips)]="data.tags"
+    placeholder="Tags (up to 3...)">
+  </app-editable-chip-list>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>No Thanks</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="submit()">Add Teaser</button>
+</div>
