@@ -9,3 +9,7 @@ export const selectTeaser = createAction('[TeaserList] Select Teaser', props<{ t
 
 export const fetchTeaserPdfComplete = createAction('[Teaser] Fetch Pdf Complete', props<{ file: string }>());
 export const fetchTeaserPdfFailed = createAction('[Teaser] Fetch Pdf Failed', props<{ error: string }>());
+
+export const addTeaser = createAction('[Teaser] Add Teaser', props<{ teaser: Teaser }>());
+export const addTeaserCompleted = createAction('[Teaser] Add Teaser Completed', props<{ teaser: Teaser }>());
+export const addTeaserFailed = createAction('[Teaser] Add Teaser Failed', props<{ teaser: Teaser }>());

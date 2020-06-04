@@ -29,7 +29,9 @@ const teaserReducer = createReducer(
 
 	on(TeaserActions.selectTeaser, onSelectedTeaserChanged),
 
-	on(TeaserActions.fetchTeaserPdfComplete, onFetchTeaserPdfComplete)
+	on(TeaserActions.fetchTeaserPdfComplete, onFetchTeaserPdfComplete),
+
+	on(TeaserActions.addTeaserCompleted, fromCollection.onAddTeaserComplete)
 );
 
 export function reducer(state: TeasersState | undefined, action: Action): TeasersState {

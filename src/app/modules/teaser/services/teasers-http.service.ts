@@ -18,7 +18,13 @@ export class TeasersHttpService {
     return this.httpClient.get<Teaser[]>(this.db);
   }
 
+  public addTeaser(teaser: Teaser): Observable<boolean> {
+    // TODO : change to call to api method
+    return of(true);
+  }
+
   public getTeaserPdf(url: string): Observable<string> {
+    // TODO : change to call to api method
     return of(url);
   }
 }

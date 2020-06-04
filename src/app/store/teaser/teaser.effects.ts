@@ -34,4 +34,17 @@ export class TeaserEffects {
 			);
 		})
 	));
+
+	public addTeaser$ = createEffect(() => this.actions$.pipe(
+		ofType(teaserActions.addTeaser),
+		switchMap((payload: { teaser: Teaser}) => {
+			return this.teaserService.addTeaser(payload.teaser).pipe(
+				map((result: boolean) => teaserActions.addTeaserCompleted(payload)),
+				catchError(error => of(teaserActions.addTeaserFailed(payload)))
+			);
+		})
+	));
+
+	// TODO : add an effect that when AddCompleted raises a notification with success.
+	// TODO : add an effect that when AddFailed raises a notification with failed.
 }

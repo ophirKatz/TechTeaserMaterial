@@ -1,25 +1,32 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
-import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { ForumComponent } from './forum/forum.component';
+import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
+import { ForumComponent } from './components/forum/forum.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { AddNewTeaserComponent } from './components/add-new-teaser/add-new-teaser.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     PdfViewerComponent,
     ForumComponent,
+    AddNewTeaserComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
-    CommonModule,
     NgxExtendedPdfViewerModule,
-
-    MatSidenavModule,
+    SharedModule,
+    FormsModule,
   ],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent,
+    FooterComponent,
   ]
 })
 export class DashboardModule { }

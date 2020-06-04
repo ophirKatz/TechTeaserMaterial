@@ -5,4 +5,5 @@ export interface Teaser extends Model {
 	author: string;
 	tags: string[];
 	path: string;
+	createdAt: Date;
 }

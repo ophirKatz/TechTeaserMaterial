@@ -1,24 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Teaser } from './../../../../model/teaser/teaser.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-teaser-item',
-  template: `
-    <div class="d-flex w-100 justify-content-between">
-      <h6 class="mb-1">teaser.name</h6>
-      <small>3 days ago</small>
-    </div>
-    <small>
-      <a href="#">
-        teaser.author
-      </a>
-    </small>
-  `
+  templateUrl: './teaser-item.component.html'
 })
 export class TeaserItemComponent implements OnInit {
+  @Input() teaser: Teaser;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

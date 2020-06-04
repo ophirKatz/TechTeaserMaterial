@@ -12,6 +12,8 @@ import { TeaserItemComponent } from './components/teaser-item/teaser-item.compon
 
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatChipsModule} from '@angular/material/chips'; 
 
 @NgModule({
   declarations: [TeaserListComponent, TeaserItemComponent],
@@ -24,6 +26,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatListModule,
     FormsModule,
+    FlexLayoutModule,
+    MatChipsModule,
 
     StoreModule.forFeature('teasers', fromTeaserStore.reducer),
     EffectsModule.forFeature(fromTeaserStore.teaserEffects),

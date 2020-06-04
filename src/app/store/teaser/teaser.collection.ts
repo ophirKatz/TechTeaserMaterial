@@ -17,6 +17,10 @@ export function onLoadComplete(state: TeasersState, payload: { teasers: Teaser[]
 	return adapter.setAll(payload.teasers, state);
 }
 
+export function onAddTeaserComplete(state: TeasersState, payload: {teaser: Teaser}) {
+	return adapter.addOne(payload.teaser, state);
+}
+
 //#endregion
 
 //#region selectors

@@ -1,17 +1,7 @@
 <mat-selection-list #teaserList [multiple]="false"
 	[(ngModel)]="selectedOptions"
 	(ngModelChange)="onSelectedTeaserChanged()">
-  <mat-list-option [value]="teaser" *ngFor="let teaser of teasers | async">
-		<div fxLayoutAlign="space-between center">
-			<div fxLayoutAlign="space-between center">
-				{{ teaser.name }}
-				<small>3 days ago</small>
-			</div>
-			<div fxLayout="row" fxLayoutAlign="start start">
-				<a href="#">
-					{{ teaser.author }}
-				</a>
-			</div>
-		</div>
-  </mat-list-option>
+  <mat-list-option [value]="teaser" *ngFor="let teaser of teasers | async" style="height: 120px;">
+		<app-teaser-item [teaser]="teaser"></app-teaser-item>
+	</mat-list-option>
 </mat-selection-list>

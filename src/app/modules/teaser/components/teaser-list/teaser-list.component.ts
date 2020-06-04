@@ -29,7 +29,6 @@ export class TeaserListComponent implements OnInit {
     let selected = this.selectedOptions[0];
     if (selected.id == this.selectedTeaser?.id) return;
     this.selectedTeaser = selected;
-    // TODO : Figure out why is this method called twice on change, only after the first selection
     console.log(this.selectedTeaser);
     this.selectedTeaserNotifyingService.selectedTeaserChanged(this.selectedTeaser);
   }
