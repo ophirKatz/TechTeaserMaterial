@@ -1,3 +1,4 @@
+import { AddNewTeaserData } from './../../../model/data/add-new-teaser.data';
 import { FileService } from './../../../common/services/file.service';
 import { Teaser } from './../../../model/teaser/teaser.model';
 import { Injectable } from '@angular/core';
@@ -18,7 +19,7 @@ export class TeasersHttpService {
     return this.httpClient.get<Teaser[]>(this.db);
   }
 
-  public addTeaser(teaser: Teaser): Observable<boolean> {
+  public addTeaser(teaserData: AddNewTeaserData): Observable<boolean> {
     // TODO : change to call to api method
     return of(true);
   }

@@ -14,13 +14,6 @@ function onSelectedTeaserChanged(state: TeasersState, payload: { teaser: Teaser 
 	};
 }
 
-function onFetchTeaserPdfComplete(state: TeasersState, payload: {file: string}): TeasersState {
-	return {
-		...state,
-		selectedTeaserPdfFile: payload.file
-	};
-}
-
 //#endregion
 
 const teaserReducer = createReducer(
@@ -29,9 +22,7 @@ const teaserReducer = createReducer(
 
 	on(TeaserActions.selectTeaser, onSelectedTeaserChanged),
 
-	on(TeaserActions.fetchTeaserPdfComplete, onFetchTeaserPdfComplete),
-
-	on(TeaserActions.addTeaserCompleted, fromCollection.onAddTeaserComplete)
+	on(TeaserActions.teaserAdded, fromCollection.onAddTeaserComplete),
 );
 
 export function reducer(state: TeasersState | undefined, action: Action): TeasersState {

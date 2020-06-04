@@ -1,7 +1,7 @@
 [
 	{
 		"id": "1",
-		"name": "AngularJS Intro",
+		"title": "AngularJS Intro",
 		"author": "Ophir Katz",
 		"tags": [
 			"web", "angular"
@@ -11,7 +11,7 @@
 	},
 	{
 		"id": "2",
-		"name": "NestJS in a nutshell Nes",
+		"title": "NestJS in a nutshell Nes",
 		"author": "Ophir Katz",
 		"tags": [
 			"web", "node", "server", "nest"
@@ -20,7 +20,7 @@
 	},
 	{
 		"id": "3",
-		"name": "RxJs",
+		"title": "RxJs",
 		"author": "Ophir Katz",
 		"tags": [
 			"web", "reactive"
@@ -29,25 +29,25 @@
 	},
 	{
 		"id": "4",
-		"name": "State management",
+		"title": "State management",
 		"author": "Ophir Katz",
 		"createdAt": "05/27/2019"
 	},
 	{
 		"id": "5",
-		"name": "State management",
+		"title": "State management",
 		"author": "Ophir Katz",
 		"createdAt": "05/27/2019"
 	},
 	{
 		"id": "6",
-		"name": "State management",
+		"title": "State management",
 		"author": "Ophir Katz",
 		"createdAt": "05/27/2019"
 	},
 	{
 		"id": "7",
-		"name": "State management",
+		"title": "State management",
 		"author": "Ophir Katz",
 		"createdAt": "05/27/2019"
 	}

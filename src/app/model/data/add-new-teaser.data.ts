@@ -1,11 +1,11 @@
-export interface AddNewTeaserDialogData {
+export interface AddNewTeaserData {
   title: string;
   author: string;
   tags: string[];
 }
 
 export function newDialogData() {
-	return <AddNewTeaserDialogData> {
+	return <AddNewTeaserData> {
 		title: '',
 		author: '',
 		tags: []

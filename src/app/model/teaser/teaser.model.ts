@@ -1,7 +1,7 @@
 import { Model } from '../model';
 
 export interface Teaser extends Model {
-	name: string;
+	title: string;
 	author: string;
 	tags: string[];
 	path: string;

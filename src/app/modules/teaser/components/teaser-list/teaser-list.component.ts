@@ -1,11 +1,15 @@
+import { ServerResponse } from './../../../../communication/server-response';
+import { CompositeSubscription } from './../../../../common/composite-subscription';
 import { SelectedTeaserNotifyingService } from './../../services/selected-teaser-notifying.service';
 import { TeasersState } from './../../../../store/teaser/teaser.state';
 import { Teaser } from './../../../../model/teaser/teaser.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { Client } from '../../../../communication/client';
 
 import * as fromTeaserStore from '../../../../store/teaser';
+import { TeaserListFacade } from '../../model/teaser-list.facade';
 
 @Component({
   selector: 'app-teaser-list',
@@ -13,15 +17,14 @@ import * as fromTeaserStore from '../../../../store/teaser';
   styleUrls: ['./teaser-list.component.css']
 })
 export class TeaserListComponent implements OnInit {
-  public teasers: Observable<Teaser[]> = this.store.select(fromTeaserStore.TeaserSelectors.allTeasers);
+  public teasers: Observable<Teaser[]> = this.facade.getTeaserList();
   public selectedTeaser: Teaser = null;
   public selectedOptions: Teaser[];
 
-  constructor(private store: Store<TeasersState>,
-    private selectedTeaserNotifyingService: SelectedTeaserNotifyingService) { }
-
+  constructor(private facade: TeaserListFacade) { }
+  
   ngOnInit(): void {
-    this.store.dispatch(fromTeaserStore.TeaserActions.loadTeasers());
+    this.facade.loadTeasers();
   }
 
   public onSelectedTeaserChanged(): void {
@@ -29,7 +32,7 @@ export class TeaserListComponent implements OnInit {
     let selected = this.selectedOptions[0];
     if (selected.id == this.selectedTeaser?.id) return;
     this.selectedTeaser = selected;
-    console.log(this.selectedTeaser);
-    this.selectedTeaserNotifyingService.selectedTeaserChanged(this.selectedTeaser);
+
+    this.facade.selectedTeaserChanged(this.selectedTeaser);
   }
 }

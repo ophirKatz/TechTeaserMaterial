@@ -1,23 +1,26 @@
+import { NotificationsService } from './../../common/services/notifications/notifications.service';
+import { AddNewTeaserData } from './../../model/data/add-new-teaser.data';
 import { TeasersHttpService } from './../../modules/teaser/services/teasers-http.service';
 import { Teaser } from 'src/app/model/teaser/teaser.model';
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-
-import { map, switchMap, catchError } from 'rxjs/operators';
-
 import * as teaserActions from './teaser.actions';
+
+import { map, switchMap, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+
 
 @Injectable()
 export class TeaserEffects {
 	constructor(private actions$: Actions,
-		private teaserService: TeasersHttpService) {}
+		private teaserService: TeasersHttpService,
+		private notificationService: NotificationsService) {}
 
 	public loadTeasers$ = createEffect(() => this.actions$.pipe(
 		ofType(teaserActions.loadTeasers),
 		switchMap(() => {
+			// TODO : Check in store if data is loaded. If so, dont reload from service.
 			return this.teaserService.fetchTeasers().pipe(
-				// TODO : Check in store if data is loaded. If so, dont reload from service.
 				map((teasers: Teaser[]) => teaserActions.loadTeasersComplete({teasers})),
 				catchError(error => of(teaserActions.loadTeasersFailed({error})))
 			);
@@ -26,8 +29,8 @@ export class TeaserEffects {
 
 	public getTeaserPdf$ = createEffect(() => this.actions$.pipe(
 		ofType(teaserActions.selectTeaser),
-		switchMap(action => {
-			let pdfPath = action.teaser.path;
+		switchMap((payload: { teaser: Teaser}) => {
+			let pdfPath = payload.teaser.path;
 			return this.teaserService.getTeaserPdf(pdfPath).pipe(
 				map((file: string) => teaserActions.fetchTeaserPdfComplete({file: file})),
 			 	catchError(error => of(teaserActions.fetchTeaserPdfFailed({error})))
@@ -35,16 +38,15 @@ export class TeaserEffects {
 		})
 	));
 
-	public addTeaser$ = createEffect(() => this.actions$.pipe(
-		ofType(teaserActions.addTeaser),
-		switchMap((payload: { teaser: Teaser}) => {
-			return this.teaserService.addTeaser(payload.teaser).pipe(
-				map((result: boolean) => teaserActions.addTeaserCompleted(payload)),
-				catchError(error => of(teaserActions.addTeaserFailed(payload)))
+	public addTeaserAsync$ = createEffect(() => this.actions$.pipe(
+		ofType(teaserActions.requestAddTeaser),
+		switchMap((payload: { teaserData: AddNewTeaserData}) => {
+			return this.teaserService.addTeaser(payload.teaserData).pipe(
+				tap((result: boolean) => {
+					this.notificationService.requestAddTeaserResult(result);
+				}),
+				map((result: boolean) => teaserActions.noAction())
 			);
 		})
 	));
-
-	// TODO : add an effect that when AddCompleted raises a notification with success.
-	// TODO : add an effect that when AddFailed raises a notification with failed.
 }

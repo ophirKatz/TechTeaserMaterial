@@ -9,6 +9,10 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { DefaultModule } from './layouts/default/default.module';
 
+import { NotificationsService } from './common/services/notifications/notifications.service';
+import { Client } from './communication/client';
+import { ServerListeners } from './communication/server-listeners/server-listeners';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +26,14 @@ import { DefaultModule } from './layouts/default/default.module';
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([])
   ],
-  providers: [],
+  providers: [
+    NotificationsService,
+    Client,
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private client: Client,
+    private serverListeners: ServerListeners) {
+  }
+}

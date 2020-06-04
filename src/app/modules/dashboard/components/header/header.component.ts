@@ -1,4 +1,4 @@
-import { newDialogData } from './../../../../model/dialog/add-new-teaser-dialog.data';
+import { newDialogData } from '../../../../model/data/add-new-teaser.data';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewTeaserComponent } from '../add-new-teaser/add-new-teaser.component';

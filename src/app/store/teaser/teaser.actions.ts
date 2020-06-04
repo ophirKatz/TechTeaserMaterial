@@ -1,5 +1,8 @@
+import { AddNewTeaserData } from './../../model/data/add-new-teaser.data';
 import { Teaser } from 'src/app/model/teaser/teaser.model';
 import { props, createAction } from '@ngrx/store';
+
+export const noAction = createAction('[TeaserList] No Action');
 
 export const loadTeasers = createAction('[TeaserList] Load Teasers');
 export const loadTeasersComplete = createAction('[TeaserList] Load Teasers Complete', props<{ teasers: Teaser[] }>());
@@ -10,6 +13,5 @@ export const selectTeaser = createAction('[TeaserList] Select Teaser', props<{ t
 export const fetchTeaserPdfComplete = createAction('[Teaser] Fetch Pdf Complete', props<{ file: string }>());
 export const fetchTeaserPdfFailed = createAction('[Teaser] Fetch Pdf Failed', props<{ error: string }>());
 
-export const addTeaser = createAction('[Teaser] Add Teaser', props<{ teaser: Teaser }>());
-export const addTeaserCompleted = createAction('[Teaser] Add Teaser Completed', props<{ teaser: Teaser }>());
-export const addTeaserFailed = createAction('[Teaser] Add Teaser Failed', props<{ teaser: Teaser }>());
+export const requestAddTeaser = createAction('[Teaser] Request Add Teaser', props<{ teaserData: AddNewTeaserData }>());
+export const teaserAdded = createAction('[Teaser] Teaser Added', props<{ teaser: Teaser }>());

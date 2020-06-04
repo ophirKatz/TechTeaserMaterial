@@ -17,8 +17,3 @@ export const selectedTeaser = createSelector(
 	featureSelectors.teaserListSelector,
 	(state: TeasersState) => state.selectedTeaser
 );
-
-export const teaserPdf = createSelector(
-	featureSelectors.teaserListSelector,
-	(state: TeasersState) => state.selectedTeaserPdfFile
-);

@@ -17,7 +17,7 @@ export class PdfViewerComponent implements OnInit, OnDestroy {
     this.subscription = this.selectedTeaserNotifyingService.subscribe(teaser => {
       if (!teaser) return;
       this.file = teaser.path;
-      this.fileName = teaser.name;
+      this.fileName = teaser.title;
     });
   }
 

@@ -8,7 +8,10 @@ const adapter: EntityAdapter<Teaser> = createEntityAdapter<Teaser>();
 
 export const initialState: TeasersState = adapter.getInitialState({
 	selectedTeaser: null,
-	selectedTeaserPdfFile: null
+
+	serverResponses: {
+		addTeaserResult: false
+	}
 });
 
 //#region collection methods
